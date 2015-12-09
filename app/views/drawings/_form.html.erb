@@ -1,0 +1,65 @@
+<%= form_for(@drawing) do |f| %>
+  <% if @drawing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@drawing.errors.count, "error") %> prohibited this drawing from being saved:</h2>
+
+      <ul>
+      <% @drawing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :newdrawing %><br>
+    <%= f.text_field :newdrawing %>
+  </div>
+  <div class="field">
+    <%= f.label :olddrawing %><br>
+    <%= f.text_field :olddrawing %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :width %><br>
+    <%= f.number_field :width %>
+  </div>
+  <div class="field">
+    <%= f.label :length %><br>
+    <%= f.number_field :length %>
+  </div>
+  <div class="field">
+    <%= f.label :shape %><br>
+    <%= f.text_field :shape %>
+  </div>
+  <div class="field">
+    <%= f.label :subset %><br>
+    <%= f.text_field :subset %>
+  </div>
+  <div class="field">
+    <%= f.label :step %><br>
+    <%= f.text_field :step %>
+  </div>
+  <div class="field">
+    <%= f.label :widthinches %><br>
+    <%= f.number_field :widthinches %>
+  </div>
+  <div class="field">
+    <%= f.label :lengthinches %><br>
+    <%= f.number_field :lengthinches %>
+  </div>
+  <div class="field">
+    <%= f.label :brand %><br>
+    <%= f.text_field :brand %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

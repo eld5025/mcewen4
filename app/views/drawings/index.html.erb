@@ -1,0 +1,117 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Drawing Search</h1>
+
+<%= search_form_for @search do |f| %>
+<div class ="field">
+  <%= f.label :brand_cont, "Brand contains:" %>
+  <%= f.text_field :brand_cont %>
+</div>
+<div class ="field">
+  <%= f.label :shape_cont, "Shape contains:" %>
+ <%= f.text_field :shape_cont %>
+
+</div>
+
+
+<div class ="field">
+  <%= f.label :subset_cont, "Subset contains:" %>
+  <%= f.text_field :subset_cont %>
+</div>
+<div class="field">
+  <%= f.label :width_gteq, "Width(ft) Between" %>
+  <%= f.text_field :width_gteq %>
+  <%= f.label :width_lteq, "and" %>
+  <%= f.text_field :width_lteq %>
+</div>
+<div class="field">
+  <%= f.label :length_gteq, "Length(ft) Between" %>
+  <%= f.text_field :length_gteq %>
+  <%= f.label :length_lteq, "and" %>
+  <%= f.text_field :length_lteq %>
+</div>
+<div class ="field">
+  <%= f.label :newdrawing_cont, "New Drawing # contains:" %>
+  <%= f.text_field :newdrawing_cont %>
+</div>
+<div class ="field">
+  <%= f.label :olddrawing_cont, "Old Drawing # contains:" %>
+  <%= f.text_field :olddrawing_cont %>
+</div>
+<div class ="field">
+  <%= f.label :step_cont, "Step(yes/no):" %>
+  <%= f.text_field :step_cont %>
+</div>
+<div class="field">
+  <%= f.label :widthinches_gteq, "Width(inches) Between" %>
+  <%= f.text_field :widthinches_gteq %>
+  <%= f.label :widthinches_lteq, "and" %>
+  <%= f.text_field :widthinches_lteq %>
+</div>
+<div class="field">
+  <%= f.label :lengthinches_gteq, "Length(inches) Between" %>
+  <%= f.text_field :lengthinches_gteq %>
+  <%= f.label :lengthinches_lteq, "and" %>
+  <%= f.text_field :lengthinches_lteq %>
+</div>
+<div class="actions">
+  <%= f.submit "Search" %>
+</div>
+
+<%= link_to "My PDF", asset_path("16000.pdf") %>
+
+<% end %>
+
+
+<table>
+  <thead>
+    <tr>
+      <th><%= sort_link @search, :newdrawing, "Newdrawing"%></th>
+      <th><%= sort_link @search, :olddrawing, "Olddrawing"%></th>
+      <th><%= sort_link @search, :year, "Year"%></th>
+      <th><%= sort_link @search, :description, "Description"%></th>
+      <th><%= sort_link @search, :width, "Width"%></th>
+      <th><%= sort_link @search, :length, "Length"%></th>
+      <th><%= sort_link @search, :shape, "Shape"%></th>
+      <th><%= sort_link @search, :subset, "Subset"%></th>
+      <th><%= sort_link @search, :step, "Step"%></th>
+      <th><%= sort_link @search, :widthinches, "Widthinches"%></th>
+      <th><%= sort_link @search, :lengthinches, "Lengthinches"%></th>
+      <th><%= sort_link @search, :brand, "Brand"%></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @drawings.each do |drawing| %>
+      <tr>
+        <td><%= drawing.newdrawing %></td>
+        <td><%= drawing.olddrawing %></td>
+        <td><%= drawing.year %></td>
+        <td><%= drawing.description %></td>
+        <td><%= drawing.width %></td>
+        <td><%= drawing.length %></td>
+        <td><%= drawing.shape %></td>
+        <td><%= drawing.subset %></td>
+        <td><%= drawing.step %></td>
+        <td><%= drawing.widthinches %></td>
+        <td><%= drawing.lengthinches %></td>
+        <td><%= drawing.brand %></td>
+        <td><%= link_to 'Show', drawing %></td>
+        <td><%= link_to 'Edit', edit_drawing_path(drawing) %></td>
+        <td><%= link_to 'Destroy', drawing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "PDF", asset_path("#{drawing.newdrawing}.pdf") %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<h3>Import Drawings</h3>
+<%= form_tag import_drawings_path, multipart: true do %>
+<%= file_field_tag :file %>
+<%= submit_tag "Upload Drawings" %>
+<% end %>
+<br>
+
+<%= link_to 'New Drawing', new_drawing_path %>

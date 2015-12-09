@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  newdrawing: MyString
+  olddrawing: MyString
+  year: 1
+  description: MyText
+  width: 1
+  length: 1
+  shape: MyString
+  subset: MyString
+  step: MyString
+  widthinches: 1
+  lengthinches: 1
+  brand: MyString
+
+two:
+  newdrawing: MyString
+  olddrawing: MyString
+  year: 1
+  description: MyText
+  width: 1
+  length: 1
+  shape: MyString
+  subset: MyString
+  step: MyString
+  widthinches: 1
+  lengthinches: 1
+  brand: MyString
